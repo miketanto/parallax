@@ -1,0 +1,9 @@
+.containerWrapper{
+    height:100%;
+    width:100%;
+    display: grid;
+    grid-template-rows: 0.01vh repeat(auto-fill, 30vh);
+    gap: 11em;
+    align-items: center;
+    z-index:15;
+}

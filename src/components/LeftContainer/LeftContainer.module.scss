@@ -1,0 +1,24 @@
+.boxContainer{
+    display:block;
+    height: 40vh;
+    width: 40vw;
+    background-color: black;
+}
+
+.imageBox{
+    height:90%;
+    width:94%;
+    position:relative;
+    top:0;
+    left:0;
+    background-color: yellow;
+}
+
+.textBox{
+    height:25%;
+    width:80%;
+    position:absolute;
+    bottom:0;
+    right:0;
+    background-color: green;
+}
