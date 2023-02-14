@@ -7,7 +7,11 @@
 
 .imageBox{
     height:90%;
+    max-height: 90%;
     width:94%;
+    max-width: 94%;
+    overflow-y: hidden;
+    overflow-x:hidden;
     position:relative;
     top:0;
     left:0;
@@ -21,4 +25,13 @@
     bottom:0;
     right:0;
     background-color: green;
+}
+
+.dateBox{
+    height:10%;
+    width:25%;
+    position:absolute;
+    top:0;
+    right:0;
+    background-color: rgb(128, 0, 117);
 }

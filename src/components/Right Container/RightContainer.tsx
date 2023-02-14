@@ -12,6 +12,7 @@ export function RightContainer(){
       className = {styles.boxContainer}>
         <div className = {styles.imageBox}></div>
         <div className = {styles.textBox}></div>
+        <div className = {styles.dateBox}></div>
       </Parallax>
     </div>
       )
