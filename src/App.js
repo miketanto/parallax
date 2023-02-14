@@ -1,6 +1,7 @@
 import {useState} from 'react'
 import Header from './components/Header/Header.tsx';
 import {ref as dbRef, set, push } from "firebase/database";
+import { collection, addDoc } from "firebase/firestore"; 
 import { getStorage, ref, uploadBytes} from "firebase/storage";
 import { storage,db } from './utils/firebase';
 import { ParallaxProvider } from 'react-scroll-parallax';
@@ -24,15 +25,18 @@ function App() {
 
   async function createMemory(){
     if(name && file && title && date && description){
-      await createMemoryImage().then(()=>{
-        const memoriesListRef = dbRef(db, 'memories');
-        const newPostRef = push(memoriesListRef);
-        set(newPostRef,{
-          title: title,
-          description: description,
-          date: date,
-          image_url: `gs://parallax-a2a85.appspot.com/public/${name}`
-        });
+      await createMemoryImage().then(async ()=>{
+        try {
+          const docRef = await addDoc(collection(db, "memories"), {
+            title: title,
+            description: description,
+            date: date,
+            image_url: `gs://parallax-a2a85.appspot.com/public/${name}`
+          });
+          console.log("Document written with ID: ", docRef.id);
+        } catch (e) {
+          console.error("Error adding document: ", e);
+        }
         console.log("Finished DB Creation")
       })
     }else{

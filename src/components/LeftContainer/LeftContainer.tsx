@@ -4,14 +4,21 @@ import {query, ref, orderByChild} from 'firebase/database'
 import { db } from '../../utils/firebase'
 import styles from './LeftContainer.module.scss'
 
+import { collection, getDocs } from "firebase/firestore"; 
+
+
 export function LeftContainer(){
   const [memory, setMemory] = useState()
   useEffect(() => {
-    const memories = query(ref(db, 'memories'), orderByChild('title'));
-    console.log(memories)
+    getData()
   }, [])
   
-  
+  async function getData(){
+    const querySnapshot = await getDocs(collection(db, "memories"));
+    querySnapshot.forEach((doc) => {
+        console.log(doc.data())
+    });
+  }
 
   return(
     <div>
